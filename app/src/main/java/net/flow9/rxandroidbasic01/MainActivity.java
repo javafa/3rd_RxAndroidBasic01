@@ -14,7 +14,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         initView();
-
         // 서브젝트 생성
         subject = new Subject();
         // 서브젝트 동작시작
