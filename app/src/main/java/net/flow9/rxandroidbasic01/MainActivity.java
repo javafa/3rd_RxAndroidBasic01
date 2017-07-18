@@ -27,13 +27,21 @@ public class MainActivity extends AppCompatActivity {
         // 버튼이 클릭될 때 마다 Subject에 옵저버를 추가
         button.setOnClickListener(v->{
             count++;
-            subject.addObserver(new Subject.Observer() {
-                String myName = "Observer "+count;
-                @Override
-                public void notification(String msg) {
-                    System.out.println(myName + ":" + msg);
-                }
-            });
+            subject.addObserver(new ObserverImpl("Observer"+count));
         });
+    }
+
+    // 옵저버의 구현체
+    public class ObserverImpl implements Subject.Observer {
+        String myName = "";
+
+        public ObserverImpl(String name){
+            myName = name;
+        }
+
+        @Override
+        public void notification(String msg) {
+            System.out.println(myName+":"+msg);
+        }
     }
 }
